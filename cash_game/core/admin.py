@@ -24,7 +24,7 @@ class CashValueFilter(admin.SimpleListFilter):
 
 class SessionAdmin(admin.ModelAdmin):
     def cash_value(self, obj):
-        return Player.CASH_LIST[obj.get_decoded()['cash']]
+        return obj.get_decoded()['cash']
     list_display = ['session_key', 'cash_value', 'expire_date']
     list_filter = [CashValueFilter]
 admin.site.register(Session, SessionAdmin)
